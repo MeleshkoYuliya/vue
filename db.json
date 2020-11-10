@@ -1,0 +1,43 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Take a shower",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "Go shopping",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "Do exersizes",
+      "completed": false
+    },
+    {
+      "id": 6,
+      "title": "Running in the park"
+    },
+    {
+      "id": 7,
+      "title": "Swimming"
+    },
+    {
+      "id": 8,
+      "title": "Go to bed at 10PM"
+    },
+    {
+      "id": 9,
+      "title": "Do home work"
+    },
+    {
+      "id": 10,
+      "title": "Sleep"
+    },
+    {
+      "id": 11,
+      "title": "Dance"
+    }
+  ]
+}
