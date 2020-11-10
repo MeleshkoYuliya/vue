@@ -106,7 +106,7 @@ export default {
 
     addItem(title){
       const item = {
-        id: this.items.length + 1,
+        id: Math.floor(Math.random() * 1000),
         title,
       }
       fetch('http://localhost:3000/todos', {
