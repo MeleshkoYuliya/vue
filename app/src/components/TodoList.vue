@@ -3,9 +3,16 @@
     <div class="inputs-container">
       <div class="input-group mb-3 create-container">
         <div class="input-group-prepend">
-          <button @click="addItem(title)" type="button" class="btn btn-success" id="button-addon1"><img src="../assets/add.svg" alt="trash" width="20"></button>
+          <button
+            @click="addItem(title)"
+            type="button" class="btn btn-success"
+            id="button-addon1"
+          >
+            <img src="../assets/add.svg" alt="trash" width="20"
+          >
+          </button>
         </div>
-        <input type="text" class="form-control" placeholder="" aria-describedby="button-addon1" v-model="title">
+        <input type="text" class="form-control" placeholder="" v-model="title">
       </div>
       <div class="input-group flex-nowrap filter">
         <div class="input-group-prepend">
@@ -13,18 +20,41 @@
             <img src="../assets/filter.svg" alt="filter" width="20">
           </button>
         </div>
-        <input type="text" class="form-control" placeholder="Find todo" @change="getFilteredList(filter)" v-model="filter">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Find todo"
+          @change="getFilteredList(filter)"
+          v-model="filter"
+        >
       </div>
     </div>
     <ul class="list-container">
       <li v-for="(item, index) in paginatedData" :key="item.id" @click="selectItem(index)" class="list-group-item">
         <span>{{item.title}}</span>
         <div v-show="selectedIndex===index" class="btn-container">
-          <button @click="removeItem(item)" type="button" class="btn btn-danger"><img src="../assets/trash.svg" alt="trash" width="20"></button>
+          <button 
+            @click="removeItem(item)"
+            type="button" class="btn btn-danger"
+          >
+            <img src="../assets/trash.svg" alt="trash" width="20">
+          </button>
           <div class="input-group mb-3 input-container">
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" v-model="item.title">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Recipient's username"
+              v-model="item.title"
+            >
             <div class="input-group-append">
-              <button @click="updateItem(item)" class="btn btn-warning" type="button" id="button-addon2"><img src="../assets/edit.svg" alt="edit" width="20"></button>
+              <button
+                @click="updateItem(item)"
+                class="btn btn-warning"
+                type="button"
+                id="button-addon2"
+              >
+                <img src="../assets/edit.svg" alt="edit" width="20">
+              </button>
             </div>
           </div>
         </div>
