@@ -1,19 +1,7 @@
 <template>
   <div id="app">
     <div class="inputs-container">
-      <div class="input-group mb-3 create-container">
-        <div class="input-group-prepend">
-          <button
-            @click="addItem(title)"
-            type="button" class="btn btn-success"
-            id="button-addon1"
-          >
-            <img src="./assets/add.svg" alt="trash" width="20"
-          >
-          </button>
-        </div>
-        <input type="text" class="form-control" placeholder="" v-model="title">
-      </div>
+      <CreateItemInput @addItem="handleAddItem"/>
       <FilterInput v-model="query"/>
     </div>
     <ul class="list-container">
@@ -27,6 +15,7 @@
 import TodoList from './components/TodoList.vue';
 import Pagination from './components/Pagination.vue';
 import FilterInput from './components/Filter';
+import CreateItemInput from './components/CreateItemInput';
 
 export default {
   name: 'App',
@@ -34,6 +23,7 @@ export default {
     TodoList,
     Pagination,
     FilterInput,
+    CreateItemInput,
   },
   data() {
     return {
@@ -69,6 +59,24 @@ export default {
   },
 
   methods: {
+    handleAddItem(data){
+      const item = {
+        id: Math.floor(Math.random() * 1000),
+        title: data,
+      }
+      fetch('http://localhost:3000/todos', {
+      method: 'POST',
+      body: JSON.stringify(item),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json))
+      this.items.push(item);
+
+      this.title = '';
+    },
     handleSearch(data){
       this.query = data;
     },
@@ -106,25 +114,6 @@ export default {
     })
       .then((response) => response.json())
       .then((json) => console.log(json))
-    },
-
-    addItem(title){
-      const item = {
-        id: Math.floor(Math.random() * 1000),
-        title,
-      }
-      fetch('http://localhost:3000/todos', {
-      method: 'POST',
-      body: JSON.stringify(item),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-      this.items.push(item);
-
-      this.title = '';
     },
   },
 }

@@ -36,9 +36,9 @@ export default {
   name: "todoList",
   props: ['item', 'show', 'index'],
   methods: {
-  selectItem() {
-    this.$emit('select', {selectedId: this.item.id});
-  }
+    selectItem() {
+      this.$emit('select', {selectedId: this.item.id});
+    }
 }
 }
 </script>
