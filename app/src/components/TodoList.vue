@@ -67,9 +67,6 @@ export default {
     align-items: center;
     width: 80%;
   }
-  .filter{
-    width: 40%
-  }
   .pagination{
     margin: 45px 0px 0px 40px;
   }

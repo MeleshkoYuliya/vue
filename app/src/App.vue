@@ -14,19 +14,7 @@
         </div>
         <input type="text" class="form-control" placeholder="" v-model="title">
       </div>
-      <div class="input-group flex-nowrap filter">
-        <div class="input-group-prepend">
-          <button class="btn btn-dark" id="addon-wrapping">
-            <img src="./assets/filter.svg" alt="filter" width="20">
-          </button>
-        </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Find todo"
-          v-model="query"
-        >
-      </div>
+      <FilterInput v-model="query"/>
     </div>
     <ul class="list-container">
       <TodoList v-for="item in paginatedData" :key="item.id" :item="item" :show="selectedItemId === item.id"  @select="onSelect"/>
@@ -38,12 +26,14 @@
 <script>
 import TodoList from './components/TodoList.vue';
 import Pagination from './components/Pagination.vue';
+import FilterInput from './components/Filter';
 
 export default {
   name: 'App',
   components: {
     TodoList,
     Pagination,
+    FilterInput,
   },
   data() {
     return {
@@ -79,6 +69,9 @@ export default {
   },
 
   methods: {
+    handleSearch(data){
+      this.query = data;
+    },
     onSelect(data){
       this.selectedItemId = this.selectedItemId === data.selectedId ? null : data.selectedId;
     },
@@ -89,12 +82,6 @@ export default {
       if(data.mode === 'prev'){
         this.pageNumber--;
       }
-    },
-    getFilteredList(filter){
-      const filteredList = this.items.filter(item => {
-        return item.title.includes(filter)
-      })
-      this.getPageList(filteredList);
     },
 
     selectItem(index) {
