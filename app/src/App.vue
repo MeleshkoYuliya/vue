@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-      <!-- <div> -->
     <div class="inputs-container">
       <div class="input-group mb-3 create-container">
         <div class="input-group-prepend">
@@ -25,8 +24,7 @@
           type="text"
           class="form-control"
           placeholder="Find todo"
-          @change="getFilteredList(filter)"
-          v-model="filter"
+          v-model="query"
         >
       </div>
     </div>
@@ -52,6 +50,8 @@ export default {
       items: [],
       selectedItemId: null,
       pageNumber: 0,
+      title: '',
+      query: '',
     }
   },
   async mounted() {
@@ -69,7 +69,12 @@ export default {
     paginatedData() {
       const start = this.pageNumber * 5;
       const end = start + 5;
-      return this.items.slice(start, end);
+      if(!this.query){
+        return this.items.slice(start, end);
+      } else {
+        const filteredItems = this.items.filter((item) => item.title.toLowerCase().includes(this.query.toLowerCase()));
+        return filteredItems.slice(start, end);
+      }
     }
   },
 
