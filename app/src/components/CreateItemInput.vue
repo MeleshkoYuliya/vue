@@ -35,4 +35,8 @@ export default {
   .filter{
     width: 40%
   }
+  .create-container{
+    width: 40%;
+    margin: 15px 0px 0px 40px
+  }
 </style>

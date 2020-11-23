@@ -54,19 +54,10 @@ export default {
   .input-container{
     width: 300px
   }
-  .create-container{
-    width: 40%;
-    margin: 15px 0px 0px 40px
-  }
   .list-group-item{
     cursor: pointer;
   }
-  .inputs-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-  }
+
   .pagination{
     margin: 45px 0px 0px 40px;
   }

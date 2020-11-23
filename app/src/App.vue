@@ -131,4 +131,10 @@ export default {
     width: 80%;
     min-height: 300px;
   }
+  .inputs-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+  }
 </style>
